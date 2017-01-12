@@ -8,7 +8,7 @@ public class Inputfile {
     public static void main(String [] args){
         
         // STEP 1. Read the file and create the pizza
-        File file = new File("big.txt");
+        File file = new File("medium.txt");
         try {
             Scanner sc = new Scanner(file);            
             //read parameters
@@ -49,9 +49,9 @@ public class Inputfile {
         }
         for(int k = 0;k<pizza.length;k++) {
             for(int m = 0;m<pizza[0].length;m++) {
-                System.out.print(number[k][m]);
+                System.out.print(number[k][m]); //-representacion matriz
             }            
-            System.out.println();
+            System.out.println(); //-representacion matriz
         }
         //count ingredients
         for(int i = 0; i < pizza.length; i++) {
@@ -61,9 +61,9 @@ public class Inputfile {
                 } else {
                     numT++;
                 }
-                System.out.print(pizza[i][j]);
+                //System.out.print(pizza[i][j]); //-representacion matriz
             }
-            System.out.println();
+            //System.out.println(); //-representacion matriz
         }        
         if(numM < numT) {
             minIngredient = 'M';
@@ -72,7 +72,7 @@ public class Inputfile {
         }               
         //STEP 2. Try to get the best
         CutPizza algo1 = new CutPizza(number);
-        algo1.getSlices(10000,numM,numT,number,H,L);
+        algo1.getSlices(100000,numM,numT,number,H,L);
         System.out.println();
         System.out.println("X "+number.length);
         System.out.println("Y "+number[0].length);

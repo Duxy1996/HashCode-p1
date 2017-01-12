@@ -39,12 +39,13 @@ public class CutPizza
     }
     public static void getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min){
         int[][] trozo = new int[pizza.length][pizza[2].length];
-        int[][] pizzaRec;
+        int[][] pizzaRec;           
         boolean hasMin = false;
         int minIn;
         int maxTrozos;
         int rectangles = 0;      
         int llevo_min = 0;
+        int llevo_min2 = 0;
         boolean terminaya = false;
         if(champ > tom){
             minIn = tom;
@@ -52,10 +53,8 @@ public class CutPizza
         else{
             minIn = champ;
         }
-       maxTrozos = minIn/1;
-        // poner en horizontal
-        for(int m = 0;m<maxTrozos;m++){
-        
+       maxTrozos = minIn/1;       
+        for(int m = 0;m<maxTrozos;m++){        
         for(int j = 0;j<pizza.length;j++){
            for(int i = 0;i<pizza[j].length;i++){
                 if(pizza[j][i] == -1){break;}
@@ -65,41 +64,56 @@ public class CutPizza
                     hasMin = true;
                     llevo_min++;
                     minIn--;
+                }else{
+                    llevo_min2++;
                 }
                 if(minIn == 0){
-                    terminaya = false;
+                    terminaya = true;
+                    if(pizza[0].length - i -1 < max-llevo_min-llevo_min2){rectangles = max-1;}
                 }
                 if(m==numeroSlices-1){
                     terminaya = false;
-                }
+                }                
                 rectangles++;
                 pizza[j][i] = -1;
-                if(rectangles == max){
-                    if(llevo_min<min){
+                if(pizza[0].length == i+1 && (llevo_min<min | llevo_min2<min)){
+                      trozo = new int[pizza.length][pizza[2].length];terminaya = true;
+                      rectangles = max;
+                      llevo_min = llevo_min2 = min;
+                }         
+                if(rectangles == max){                    
+                    if(llevo_min<min | llevo_min2<min){
                         rectangles--;
-                        trozo = quitarElprimero(trozo);
-                    }else{
-                        rectangles = 0;
-                        llevo_min = 0;
+                        trozo = quitarElprimero(trozo);   
+                        if(pizza[0].length == i+1){
+                            trozo = new int[pizza.length][pizza[2].length];terminaya = true;
+                        }
+                    }else{                        
                         if(terminaya){
+                            rectangles = 0;
+                            llevo_min = 0;
                             System.out.println("Trozo");
                             hasMin = false;
                             terminaya = false;
                             rectangles = 0;
+                            llevo_min = 0;
+                            llevo_min2 = 0;
                             for(int js = 0;js<trozo.length;js++){
+                                int temp = 0;
                                 for(int is = 0;is<trozo[js].length;is++){
                                     if(trozo[js][is] != 0){
                                         System.out.print(trozo[js][is]);
                                         score++;
-                                    }               
+                                    }            
+                                    temp = is;
                                 }  
-                                if(trozo[js][0] != 0){
+                                if(trozo[js][temp] != 0){
                                     System.out.println();
                                 }
                             }
                             System.out.println();
                             trozo = new int[pizza.length][pizza[2].length];
-                            if(pizza.length-j < max){
+                            if(pizza.length-i < min*2){
                                 break;
                             }
                         }                        
@@ -107,23 +121,10 @@ public class CutPizza
                 }
                 
             }             
-        }  
+        }       
         
-        for(int j = 0;j<trozo.length;j++){
-           for(int i = 0;i<trozo[j].length;i++){
-               if(trozo[j][i] != 0){
-                   System.out.print(trozo[j][i]);
-                   score++;
-                }               
-            }  
-           if(trozo[j][0] != 0){
-                System.out.println();
-           }
-        }
-        System.out.println();
-        trozo = new int[pizza.length][pizza[2].length];
        }
-       System.out.println(score);
+       System.out.println("\n\n Score: "+score);
     }
     public static int[][] quitarElprimero(int[][] trozo){
         boolean x = false;
