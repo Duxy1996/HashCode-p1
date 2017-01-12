@@ -9,7 +9,7 @@ public class CutPizza
 {
     static int[][] pizzaOne = {{1,1,1,1},{1,2,1,1},{1,2,1,2},{1,2,1,1},{1,1,1,1},{2,2,2,1}};
     static int[][] pizzaTwo = {{1,1,1,1},{1,2,1,1},{1,2,1,2},{1,2,1,1},{1,1,1,1},{2,2,2,1}};
-    static int[][] pizzaThree = {{1,1,1,1},{1,2,2,1},{1,2,2,1},{1,1,1,1}};
+    static int[][] pizzaThree = {{1,2,2,2,1,1,1},{2,2,2,2,1,2,2},{1,1,2,1,1,2,1},{1,2,2,1,2,2,2},{1,1,1,1,1,1,2},{1,1,1,1,1,1,2}};
     static int[][] pizzaFour = {{1,1,1,1},{1,2,1,1},{1,2,1,2},{1,2,1,1},{1,1,1,1},{2,2,2,1}};
     public static void main(String [] args){        
         int numChamp;
@@ -19,7 +19,7 @@ public class CutPizza
         System.out.println("Champiñones: "+numChamp);
         System.out.println("Tomatitos  : "+numTom);
         System.out.println("---------------------");
-        getSlices(4,numChamp,numTom,pizzaThree);
+        getSlices(20,numChamp,numTom,pizzaThree,5);
     }
     public static int getIngredient(int[][] pizza,int ingredient){
         int x = 0;
@@ -32,10 +32,12 @@ public class CutPizza
         }
         return x;
     }
-    public static void getSlices(int numeroSlices,int champ,int tom,int[][] pizza){
+    public static void getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max){
         int[][] trozo = new int[pizza.length][pizza[2].length];
         int[][] pizzaRec;
+        boolean hasMin = false;
         int minIn;
+        int rectangles = 0;        
         boolean terminaya = false;
         if(champ > tom){
             minIn = tom;
@@ -52,6 +54,7 @@ public class CutPizza
                 trozo[j][i] = pizza[j][i];                 
                 if(pizza[j][i] == 2){
                     terminaya = true;
+                    hasMin = true;
                     minIn--;
                 }
                 if(minIn == 0){
@@ -60,12 +63,22 @@ public class CutPizza
                 if(m==numeroSlices-1){
                     terminaya = false;
                 }
+                rectangles++;
                 pizza[j][i] = -1;
+                if(rectangles == max){
+                    if(hasMin == false){
+                        rectangles--;
+                    }else{
+                        rectangles = 0;
+                        break;                        
+                    }                                        
+                }
             }  
            if(terminaya){
                 break;
            }
-        }      
+        }  
+        hasMin = false;
         terminaya = false;
         for(int j = 0;j<trozo.length;j++){
            for(int i = 0;i<trozo[j].length;i++){
@@ -80,5 +93,10 @@ public class CutPizza
         System.out.println();
         trozo = new int[pizza.length][pizza[2].length];
        }
+    }
+    public static int[][] quitarElprimero(int[][] trozo){
+        int[][] aux = new int[trozo.length][trozo[0].length];
+        
+        return aux;
     }
 }
