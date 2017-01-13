@@ -49,9 +49,9 @@ public class Inputfile {
         }
         for(int k = 0;k<pizza.length;k++) {
             for(int m = 0;m<pizza[0].length;m++) {
-                System.out.print(number[k][m]); //-representacion matriz
+                //System.out.print(number[k][m]); //-representacion matriz
             }            
-            System.out.println(); //-representacion matriz
+            //System.out.println(); //-representacion matriz
         }
         //count ingredients
         for(int i = 0; i < pizza.length; i++) {
@@ -72,7 +72,7 @@ public class Inputfile {
         }               
         //STEP 2. Try to get the best
         CutPizza algo1 = new CutPizza(number);
-        algo1.getSlices(100000,numM,numT,number,H,L);
+        algo1.getSlices(1000000,numM,numT,number,H,L);
         System.out.println();
         System.out.println("X "+number.length);
         System.out.println("Y "+number[0].length);

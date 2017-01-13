@@ -1,10 +1,4 @@
-
-/**
- * Write a description of class CutPizza here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.ArrayList;
 public class CutPizza
 {
     static int[][] pizzaOne = {{1,1,1,1},{1,2,1,1},{1,2,1,2},{1,2,1,1},{1,1,1,1},{2,2,2,1}};
@@ -12,6 +6,7 @@ public class CutPizza
     static int[][] pizzaThree = {{1,2,2,2,1,1,1},{2,2,2,2,1,2,2},{1,1,2,1,1,2,1},{1,2,2,1,2,2,2},{1,1,1,1,1,1,2},{1,1,1,1,1,1,2}};
     static int[][] pizzaFour = {{1,1,1,1},{1,2,1,1},{1,2,1,2},{1,2,1,1},{1,1,1,1},{2,2,2,1}};
     static int[][] googlepizza = null;
+    static ArrayList<int[][]> trozos = null;
     static int score = 0;
     public CutPizza(int[][] googlepizza){
         this.googlepizza = googlepizza;
@@ -71,6 +66,10 @@ public class CutPizza
                     terminaya = true;
                     if(pizza[0].length - i -1 < max-llevo_min-llevo_min2){rectangles = max-1;}
                 }
+                if(pizza[0].length == i+1 && (llevo_min>=min | llevo_min2>=min) ){
+                    rectangles = max;
+                    terminaya = true;
+                }
                 if(m==numeroSlices-1){
                     terminaya = false;
                 }                
@@ -81,7 +80,7 @@ public class CutPizza
                       rectangles = max;
                       llevo_min = llevo_min2 = min;
                 }         
-                if(rectangles == max){                    
+                if(rectangles >= max){                    
                     if(llevo_min<min | llevo_min2<min){
                         rectangles--;
                         trozo = quitarElprimero(trozo);   
@@ -98,6 +97,7 @@ public class CutPizza
                             rectangles = 0;
                             llevo_min = 0;
                             llevo_min2 = 0;
+                            //trozos.add(trozo);
                             for(int js = 0;js<trozo.length;js++){
                                 int temp = 0;
                                 for(int is = 0;is<trozo[js].length;is++){
@@ -124,7 +124,7 @@ public class CutPizza
         }       
         
        }
-       System.out.println("\n\n Score: "+score);
+       System.out.println("\n\n Score: "+score+"size: ");
     }
     public static int[][] quitarElprimero(int[][] trozo){
         boolean x = false;
