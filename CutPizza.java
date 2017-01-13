@@ -36,6 +36,7 @@ public class CutPizza
         int[][] trozo = new int[pizza.length][pizza[2].length];
         int[][] pizzaRec;           
         boolean hasMin = false;
+        int score = 0;
         int minIn;
         int maxTrozos;
         int rectangles = 0;      

@@ -11,7 +11,7 @@ public class Inputfile {
         System.out.print("Introduce nombre archivo sin extension:  ");
         Scanner kbd = new Scanner(System.in);
         String s = kbd.nextLine();
-        File file = new File(s+".txt");
+        File file = new File(s+".in");
         try {
             Scanner sc = new Scanner(file);            
             //read parameters
@@ -75,7 +75,8 @@ public class Inputfile {
         }               
         //STEP 2. Try to get the best
         CutPizza algo1 = new CutPizza(number);
-        int xx = algo1.getSlices(1000000,numM,numT,number,H,L);
+        eficient algo2 = new eficient();
+        int xx = algo2.getSlices(1000000,numM,numT,number,H,L);
         System.out.println();
         System.out.println("Score:"+xx);
         System.out.println("X "+number.length);
