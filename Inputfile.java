@@ -75,7 +75,7 @@ public class Inputfile {
         }               
         //STEP 2. Try to get the best
         CutPizza algo1 = new CutPizza(number);
-        eficient algo2 = new eficient();
+        Eficient algo2 = new Eficient();
         int xx = algo2.getSlices(1000000,numM,numT,number,H,L);
         System.out.println();
         System.out.println("Score:"+xx);

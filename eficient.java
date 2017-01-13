@@ -1,16 +1,17 @@
 import java.util.*;
-public class eficient
+public class Eficient
 {
     public static int getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min){
-       int[][] trozo = new int[pizza.length][pizza[2].length];             
+       int[][] trozo = new int[pizza.length][pizza[2].length];   
+       Slice troz;
+       int counter = 0;
        boolean hasMin = false;
        int score = 0;
        int minIn;
        int maxTrozos;
        int rectangles = 0;      
        int llevo_min = 0;
-       int llevo_min2 = 0;
-       ArrayList<int[][]> slices = new ArrayList();
+       int llevo_min2 = 0;       
        boolean terminaya = false;
        if(champ > tom){
            minIn = tom;
@@ -103,7 +104,7 @@ public class eficient
                 }             
             }          
        }       
-       System.out.println("Trozos"+slices.size());
+       //System.out.println("Trozos"+slices.size());
        return score;
     }
     public static int[][] quitarElprimero(int[][] trozo){
