@@ -32,7 +32,7 @@ public class CutPizza
         }
         return x;
     }
-    public static void getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min){
+    public static int getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min){
         int[][] trozo = new int[pizza.length][pizza[2].length];
         int[][] pizzaRec;           
         boolean hasMin = false;
@@ -118,13 +118,12 @@ public class CutPizza
                             }
                         }                        
                     }                                        
-                }
-                
+                }                
             }             
-        }       
-        
+        }          
        }
-       System.out.println("\n\n Score: "+score+"size: ");
+       //System.out.println("\n\n Score: "+score+"");
+       return score;
     }
     public static int[][] quitarElprimero(int[][] trozo){
         boolean x = false;

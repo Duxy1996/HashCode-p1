@@ -8,7 +8,10 @@ public class Inputfile {
     public static void main(String [] args){
         
         // STEP 1. Read the file and create the pizza
-        File file = new File("medium.txt");
+        System.out.print("Introduce nombre archivo sin extension:  ");
+        Scanner kbd = new Scanner(System.in);
+        String s = kbd.nextLine();
+        File file = new File(s+".txt");
         try {
             Scanner sc = new Scanner(file);            
             //read parameters
@@ -72,8 +75,9 @@ public class Inputfile {
         }               
         //STEP 2. Try to get the best
         CutPizza algo1 = new CutPizza(number);
-        algo1.getSlices(1000000,numM,numT,number,H,L);
+        int xx = algo1.getSlices(1000000,numM,numT,number,H,L);
         System.out.println();
+        System.out.println("Score:"+xx);
         System.out.println("X "+number.length);
         System.out.println("Y "+number[0].length);
         System.out.println("Total "+(number[0].length*number.length));
