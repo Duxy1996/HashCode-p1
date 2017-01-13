@@ -1,12 +1,6 @@
 #BlueJ class context
-comment0.params=googlepizza
-comment0.target=CutPizza(int[][])
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment2.params=pizza\ ingredient
-comment2.target=int\ getIngredient(int[][],\ int)
-comment3.params=numeroSlices\ champ\ tom\ pizza\ max\ min
-comment3.target=int\ getSlices(int,\ int,\ int,\ int[][],\ int,\ int)
-comment4.params=trozo
-comment4.target=int[][]\ quitarElprimero(int[][])
-numComments=5
+comment0.params=numeroSlices\ champ\ tom\ pizza\ max\ min
+comment0.target=int\ getSlices(int,\ int,\ int,\ int[][],\ int,\ int)
+comment1.params=trozo
+comment1.target=int[][]\ quitarElprimero(int[][])
+numComments=2

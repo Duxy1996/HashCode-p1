@@ -1,8 +1,14 @@
 #BlueJ class context
 comment0.params=slice
 comment0.target=Slice(int)
-comment1.params=slice
-comment1.target=void\ setSlice(int[][])
-comment2.params=pos
-comment2.target=int[][]\ getFirst(int)
-numComments=3
+comment1.params=r
+comment1.target=Rectangle\ getfirst(int)
+comment2.params=posx\ posy\ ingre
+comment2.target=void\ setSlice(int,\ int,\ int)
+comment3.params=
+comment3.target=void\ removeFirst()
+comment4.params=
+comment4.target=int\ getScore()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

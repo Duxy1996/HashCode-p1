@@ -2,9 +2,10 @@ import java.util.*;
 public class Eficient
 {
     public static int getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min){
-       int[][] trozo = new int[pizza.length][pizza[2].length];   
-       Slice troz;
-       int counter = 0;
+       int[][] trozo = new int[pizza.length][pizza[2].length];        
+       ArrayList<Slice> resp = new ArrayList();
+       int counter = 0;       
+       Slice portion = new Slice(counter);
        boolean hasMin = false;
        int score = 0;
        int minIn;
@@ -25,8 +26,8 @@ public class Eficient
                 for(int i = 0;i<pizza[j].length;i++){
                     if(pizza[j][i] == -1){
                         break;
-                    }
-                    trozo[j][i] = pizza[j][i];                 
+                    }                    
+                    portion.setSlice(j,i,pizza[j][i]);                 
                     if(pizza[j][i] == 2){
                         terminaya = true;
                         hasMin = true;
@@ -58,43 +59,32 @@ public class Eficient
                     rectangles++;
                     pizza[j][i] = -1;
                     if(pizza[0].length == i+1 && (llevo_min<min | llevo_min2<min)){
-                        trozo = new int[pizza.length][pizza[2].length];terminaya = true;
+                        portion = new Slice(counter);
+                        terminaya = true;
                         rectangles = max;
                         llevo_min = llevo_min2 = min;
                     }         
                     if(rectangles >= max){                    
                         if(llevo_min<min | llevo_min2<min){
                             rectangles--;
-                            trozo = quitarElprimero(trozo);   
+                            portion.removeFirst();  
                             if(pizza[0].length == i+1){
-                                trozo = new int[pizza.length][pizza[2].length];terminaya = true;
+                                 portion = new Slice(counter);
+                                 terminaya = true;
                             }
                         }else{                        
                             if(terminaya){
                                 rectangles = 0;
                                 llevo_min = 0;
-                                System.out.println("Trozo");
+                                //System.out.println("Trozo");
                                 hasMin = false;
                                 terminaya = false;
                                 rectangles = 0;
                                 llevo_min = 0;
                                 llevo_min2 = 0;
                                 //slices.add(trozo);
-                                for(int js = 0;js<trozo.length;js++){
-                                    int temp = 0;
-                                    for(int is = 0;is<trozo[js].length;is++){
-                                        if(trozo[js][is] != 0){
-                                            System.out.print(trozo[js][is]);
-                                            score++;
-                                        }            
-                                        temp = is;
-                                    }  
-                                    if(trozo[js][temp] != 0){
-                                        System.out.println();
-                                    }
-                                }
-                                System.out.println();
-                                trozo = new int[pizza.length][pizza[2].length];
+                                resp.add(portion);
+                                portion = new Slice(counter++);
                                 if(pizza.length-i < min*2){
                                     break;
                                 }
@@ -105,6 +95,10 @@ public class Eficient
             }          
        }       
        //System.out.println("Trozos"+slices.size());
+       for(Slice aux : resp){
+           System.out.println(aux.toString());
+           score = aux.getScore()+score;
+        }
        return score;
     }
     public static int[][] quitarElprimero(int[][] trozo){

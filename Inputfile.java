@@ -74,7 +74,7 @@ public class Inputfile {
             minIngredient = 'T';
         }               
         //STEP 2. Try to get the best
-        CutPizza algo1 = new CutPizza(number);
+        CutPizza algo1 = new CutPizza();
         Eficient algo2 = new Eficient();
         int xx = algo2.getSlices(1000000,numM,numT,number,H,L);
         System.out.println();
