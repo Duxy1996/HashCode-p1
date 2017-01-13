@@ -76,11 +76,16 @@ public class Inputfile {
         //STEP 2. Try to get the best
         CutPizza algo1 = new CutPizza();
         Eficient algo2 = new Eficient();
-        int xx = algo2.getSlices(1000000,numM,numT,number,H,L);
+        int xx;
+        double first = System.nanoTime();
+        xx = algo2.getSlices(1000000,numM,numT,number,H,L);
+        first = System.nanoTime() -first;
         System.out.println();
-        System.out.println("Score:"+xx);
+        System.out.println("Score:"+xx+" for "+s);
         System.out.println("X "+number.length);
         System.out.println("Y "+number[0].length);
         System.out.println("Total "+(number[0].length*number.length));
+        System.out.println("Puntuacion:"+ (((double)xx)/(number[0].length*number.length))*100);
+        System.out.println("tiempo: "+first/1000000000);
     }       
 }

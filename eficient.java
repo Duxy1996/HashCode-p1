@@ -96,7 +96,7 @@ public class Eficient
        }       
        //System.out.println("Trozos"+slices.size());
        for(Slice aux : resp){
-           System.out.println(aux.toString());
+           //System.out.println(aux.toString());
            score = aux.getScore()+score;
         }
        return score;
