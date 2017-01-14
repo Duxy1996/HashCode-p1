@@ -3,4 +3,6 @@ comment0.params=numeroSlices\ champ\ tom\ pizza\ max\ min
 comment0.target=int\ getSlices(int,\ int,\ int,\ int[][],\ int,\ int)
 comment1.params=trozo
 comment1.target=int[][]\ quitarElprimero(int[][])
-numComments=2
+comment2.params=aux\ min
+comment2.target=boolean\ filter(Slice,\ int)
+numComments=3

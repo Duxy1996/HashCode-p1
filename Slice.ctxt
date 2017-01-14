@@ -2,7 +2,7 @@
 comment0.params=slice
 comment0.target=Slice(int)
 comment1.params=r
-comment1.target=Rectangle\ getfirst(int)
+comment1.target=Rectangle\ get(int)
 comment2.params=posx\ posy\ ingre
 comment2.target=void\ setSlice(int,\ int,\ int)
 comment3.params=

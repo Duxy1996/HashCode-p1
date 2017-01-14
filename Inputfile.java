@@ -74,11 +74,13 @@ public class Inputfile {
             minIngredient = 'T';
         }               
         //STEP 2. Try to get the best
-        CutPizza algo1 = new CutPizza();
+        //CutPizza algo1 = new CutPizza();
         Eficient algo2 = new Eficient();
-        int xx;
+        int xx = 0;
         double first = System.nanoTime();
-        xx = algo2.getSlices(1000000,numM,numT,number,H,L);
+        try{
+            xx = algo2.getSlices(1000000,numM,numT,number,H,L);
+        }catch(Exception e){}
         first = System.nanoTime() -first;
         System.out.println();
         System.out.println("Score:"+xx+" for "+s);

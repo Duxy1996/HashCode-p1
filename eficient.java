@@ -1,7 +1,8 @@
 import java.util.*;
+import java.io.*;
 public class Eficient
 {
-    public static int getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min){
+    public static int getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min) throws Exception{
        int[][] trozo = new int[pizza.length][pizza[2].length];        
        ArrayList<Slice> resp = new ArrayList();
        int counter = 0;       
@@ -83,7 +84,9 @@ public class Eficient
                                 llevo_min = 0;
                                 llevo_min2 = 0;
                                 //slices.add(trozo);
-                                resp.add(portion);
+                                if(filter(portion,min)){
+                                    resp.add(portion);
+                                }
                                 portion = new Slice(counter++);
                                 if(pizza.length-i < min*2){
                                     break;
@@ -95,10 +98,12 @@ public class Eficient
             }          
        }       
        //System.out.println("Trozos"+slices.size());
-       for(Slice aux : resp){
-           //System.out.println(aux.toString());
-           score = aux.getScore()+score;
-        }
+       System.out.println();
+      
+       int trozosvacios = 0;
+       OutputFile print = new OutputFile();
+       //score = print.printPizza(resp);
+       print.printMatrix(pizza);
        return score;
     }
     public static int[][] quitarElprimero(int[][] trozo){
@@ -116,5 +121,19 @@ public class Eficient
             }
         }
         return trozo;
+    }
+    public static boolean filter(Slice aux,int min){
+        int min1 = 0;
+        int min2 = 0;
+        if(aux.getScore() == 0){return false;}
+        for(int i = 0; i < aux.getScore();i++){
+            if(aux.get(i).ingredient == 'T'){
+                min1++;
+            }else{
+                min2++;
+            }
+        }
+        if(min1 < min || min2 < min){return false;}
+        return true;
     }
 }
