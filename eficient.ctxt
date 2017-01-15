@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=numeroSlices\ champ\ tom\ pizza\ max\ min
-comment0.target=int\ getSlices(int,\ int,\ int,\ int[][],\ int,\ int)
+comment0.params=numeroSlices\ champ\ tom\ pizza\ max\ min\ s
+comment0.target=int\ getSlices(int,\ int,\ int,\ int[][],\ int,\ int,\ java.lang.String)
 comment1.params=trozo
 comment1.target=int[][]\ quitarElprimero(int[][])
 comment2.params=aux\ min

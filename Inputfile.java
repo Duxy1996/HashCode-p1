@@ -16,13 +16,12 @@ public class Inputfile {
             Scanner sc = new Scanner(file);            
             //read parameters
             R = sc.nextInt();
-            System.out.println(R);
             C = sc.nextInt();
-            System.out.println(C);
+            System.out.println("Pizza de "+R+"x"+C);
             L = sc.nextInt();
-            System.out.println(L);
+            System.out.println("Minimo ingrediente por trozo: "+L);
             H = sc.nextInt();
-            System.out.println(H);
+            System.out.println("Maximo ingredientes por trozo: "+H);
             sc.nextLine();            
             //create pizza
             pizza = new char[R][C];            
@@ -79,7 +78,7 @@ public class Inputfile {
         int xx = 0;
         double first = System.nanoTime();
         try{
-            xx = algo2.getSlices(1000000,numM,numT,number,H,L);
+            xx = algo2.getSlices(1000000,numM,numT,number,H,L,s);
         }catch(Exception e){}
         first = System.nanoTime() -first;
         System.out.println();

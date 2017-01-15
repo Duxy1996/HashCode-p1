@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class Eficient
 {
-    public static int getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min) throws Exception{
+    public static int getSlices(int numeroSlices,int champ,int tom,int[][] pizza,int max,int min, String s) throws Exception{
        int[][] trozo = new int[pizza.length][pizza[2].length];        
        ArrayList<Slice> resp = new ArrayList();
        int counter = 0;       
@@ -42,21 +42,11 @@ public class Eficient
                         if(pizza[0].length - i < max-llevo_min-llevo_min2){
                             rectangles = max-1;
                         }
-                    }
-                    if(pizza[0].length == i+1 && (llevo_min>=min | llevo_min2>=min) ){
-                        int aux = max - rectangles;
-                        int aux2 = pizza[0].length -1 -i;
-                        aux = aux -aux2;
-                        if(aux >= 0){
-                            rectangles = rectangles + aux;
-                        }else{
-                            rectangles = rectangles;
-                        }
+                    }                    
+                    if(pizza[0].length == i+1 && (llevo_min>=min | llevo_min2>=min) ){                        
+                        rectangles = max;
                         terminaya = true;                        
-                    }
-                    if(m==numeroSlices-1){
-                        terminaya = false;
-                    }                
+                    }                                    
                     rectangles++;
                     pizza[j][i] = -1;
                     if(pizza[0].length == i+1 && (llevo_min<min | llevo_min2<min)){
@@ -67,6 +57,14 @@ public class Eficient
                     }         
                     if(rectangles >= max){                    
                         if(llevo_min<min | llevo_min2<min){
+                            Rectangle aux = portion.get(0);
+                            if(aux.ingredient == 'M'){
+                                //champiñones
+                                llevo_min--;
+                            }else{
+                                //tomates
+                                llevo_min2--;
+                            }
                             rectangles--;
                             portion.removeFirst();  
                             if(pizza[0].length == i+1){
@@ -77,18 +75,16 @@ public class Eficient
                             if(terminaya){
                                 rectangles = 0;
                                 llevo_min = 0;
-                                //System.out.println("Trozo");
                                 hasMin = false;
                                 terminaya = false;
                                 rectangles = 0;
                                 llevo_min = 0;
                                 llevo_min2 = 0;
-                                //slices.add(trozo);
                                 if(filter(portion,min)){
                                     resp.add(portion);
                                 }
                                 portion = new Slice(counter++);
-                                if(pizza.length-i < min*2){
+                                if(pizza[2].length-i < min*2){
                                     break;
                                 }
                             }                        
@@ -98,11 +94,10 @@ public class Eficient
             }          
        }       
        //System.out.println("Trozos"+slices.size());
-       System.out.println();
-      
+       System.out.println();      
        int trozosvacios = 0;
-       OutputFile print = new OutputFile();
-       //score = print.printPizza(resp);
+       OutputFile print = new OutputFile(s);
+       score = print.printPizza(resp);
        print.printMatrix(pizza);
        return score;
     }
