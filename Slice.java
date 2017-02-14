@@ -13,14 +13,8 @@ public class Slice
            return rectangles.get(r);
         }catch(Exception e){return null;}
     }
-   public void setSlice(int posx,int posy,int ingre){
-       char i;
-       if(ingre == 1){
-           i = 'T';
-        }else{
-           i = 'M';
-        }      
-       Rectangle ingres = new Rectangle(posx,posy,i);      
+   public void setSlice(int posx,int posy,char ingre){             
+       Rectangle ingres = new Rectangle(posx,posy,ingre);      
        rectangles.add(ingres);
     }
    public void removeFirst(){

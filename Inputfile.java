@@ -5,24 +5,24 @@ public class Inputfile {
     static char[][] pizza;
     static int R, C, L, H, numM, numT;
     static char minIngredient;    
-    public static void main(String [] args){
-        
+    public static void main(String [] args){           
         // STEP 1. Read the file and create the pizza
         System.out.print("Introduce nombre archivo sin extension:  ");
         Scanner kbd = new Scanner(System.in);
         String s = kbd.nextLine();
+        double globalTimeOne = System.nanoTime();
         File file = new File(s+".in");
         try {
             Scanner sc = new Scanner(file);            
             //read parameters
             R = sc.nextInt();
-            C = sc.nextInt();
+            C = sc.nextInt();            
+            L = sc.nextInt();            
+            H = sc.nextInt();            
+            sc.nextLine();
             System.out.println("Pizza de "+R+"x"+C);
-            L = sc.nextInt();
             System.out.println("Minimo ingrediente por trozo: "+L);
-            H = sc.nextInt();
             System.out.println("Maximo ingredientes por trozo: "+H);
-            sc.nextLine();            
             //create pizza
             pizza = new char[R][C];            
             //fill the pizza!
@@ -38,24 +38,8 @@ public class Inputfile {
         } 
         catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        int[][] number = new int[pizza.length][pizza[0].length];
-        for(int k = 0;k<pizza.length;k++) {
-            for(int m = 0;m<pizza[0].length;m++) {
-                if(pizza[k][m]=='T'){
-                    number[k][m]=1;
-                }else{
-                    number[k][m]=2;
-                }
-            }                  
-        }
-        for(int k = 0;k<pizza.length;k++) {
-            for(int m = 0;m<pizza[0].length;m++) {
-                //System.out.print(number[k][m]); //-representacion matriz
-            }            
-            //System.out.println(); //-representacion matriz
-        }
-        //count ingredients
+        }       
+        //Count ingredients
         for(int i = 0; i < pizza.length; i++) {
             for(int j = 0; j < pizza[0].length; j++) {
                 if(pizza[i][j] == 'M') {
@@ -73,20 +57,32 @@ public class Inputfile {
             minIngredient = 'T';
         }               
         //STEP 2. Try to get the best
-        //CutPizza algo1 = new CutPizza();
         Eficient algo2 = new Eficient();
         int xx = 0;
         double first = System.nanoTime();
         try{
-            xx = algo2.getSlices(1000000,numM,numT,number,H,L,s);
-        }catch(Exception e){}
-        first = System.nanoTime() -first;
+            xx = algo2.getSlices(numM,numT,pizza,H,L,s);
+        }catch(Exception e){
+            
+        }
+        int max_score = 0;
+        if(numM<numT){
+            max_score = (numM/L)*H;
+        }
+        else{
+            max_score = (numT/L)*H;
+        }
+        if(max_score>(pizza[0].length*pizza.length)){
+            max_score = (pizza[0].length*pizza.length);
+        }
+        first = System.nanoTime() - first;
         System.out.println();
+        System.out.println("Max score is: "+max_score);
         System.out.println("Score:"+xx+" for "+s);
-        System.out.println("X "+number.length);
-        System.out.println("Y "+number[0].length);
-        System.out.println("Total "+(number[0].length*number.length));
-        System.out.println("Puntuacion:"+ (((double)xx)/(number[0].length*number.length))*100);
-        System.out.println("tiempo: "+first/1000000000);
+        System.out.println("X "+pizza.length);
+        System.out.println("Y "+pizza[0].length);
+        System.out.println("Puntuacion:"+ (((double)xx)/(pizza[0].length*pizza.length))*100);
+        System.out.println("Tiempo Algoritmico: "+first/1000000000);
+        System.out.println("Tiempo Global:"+ ((System.nanoTime()- globalTimeOne)/1000000000));
     }       
 }
