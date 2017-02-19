@@ -4,5 +4,5 @@ comment0.target=OutputFile(java.lang.String)
 comment1.params=resp
 comment1.target=int\ printPizza(java.util.ArrayList)
 comment2.params=matrix
-comment2.target=void\ printMatrix(int[][])
+comment2.target=void\ printMatrix(char[][])
 numComments=3

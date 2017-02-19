@@ -8,10 +8,15 @@ public class Slice
        this.number_slice = slice;
        rectangles = new ArrayList();
     }
+   public int size(){
+       return rectangles.size();
+    }
    public Rectangle get(int r){
        try{
            return rectangles.get(r);
-        }catch(Exception e){return null;}
+        }catch(Exception e){
+            return null;
+        }
     }
    public void setSlice(int posx,int posy,char ingre){             
        Rectangle ingres = new Rectangle(posx,posy,ingre);      

@@ -1,8 +1,10 @@
 #BlueJ class context
-comment0.params=champ\ tom\ pizza\ max\ min\ s
+comment0.params=champ\ tom\ pizza\ max\ min\ name
 comment0.target=int\ getSlices(int,\ int,\ char[][],\ int,\ int,\ java.lang.String)
-comment1.params=aux\ min
-comment1.target=boolean\ filter(Slice,\ int)
+comment1.params=aux\ min\ max
+comment1.target=boolean\ filter(Slice,\ int,\ int)
 comment2.params=pizza\ max\ min
-comment2.target=int[][]\ evenMore(int[][],\ int,\ int)
-numComments=3
+comment2.target=java.util.ArrayList\ evenMore(char[][],\ int,\ int)
+comment3.params=pizza\ max\ min\ elector
+comment3.target=java.util.ArrayList\ evenMore(char[][],\ int,\ int,\ boolean)
+numComments=4
