@@ -53,8 +53,8 @@ public class Inputfile {
         } else {
             minIngredient = 'T';
         }               
-        //STEP 2. Try to get the best
-        Eficient3 algo2 = new Eficient3();
+        //STEP 2. Try to get the best        
+        Eficient5 algo2 = new Eficient5();
         int score = 0;
         double first = System.nanoTime();
         try{

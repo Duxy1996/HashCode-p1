@@ -5,6 +5,14 @@ public class OutputFile {
     public OutputFile(String s){
            this.name = s;
         }
+    public int getScore( ArrayList<Slice> resp) throws Exception{ 
+        int score = 0;
+        int trozosvacios = 0;
+        for(Slice aux : resp){
+            score = aux.getScore()+score;
+        }
+        return score;
+    }
     public int printPizza( ArrayList<Slice> resp) throws Exception{
        //double name = Math.random();
        int trozosvacios = 0;
