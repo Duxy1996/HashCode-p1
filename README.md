@@ -12,9 +12,9 @@ Version of MODIFICATION: 20170220
 AUTHORS: 
 
 ###Alvaro Casado 
-[GitHub](https://es.linkedin.com/in/alvarocasadoc)
+[Linkedin Álvaro](https://es.linkedin.com/in/alvarocasadoc)
 ###Carlos Duran
-[GitHub](https://es.linkedin.com/in/carlosduranroca)
+[Linkedin Carlos](https://es.linkedin.com/in/carlosduranroca)
 
 USER INSTRUCTIONS:  
 To execute the code you only have to compile the project and write in your terminal:
@@ -22,7 +22,7 @@ To execute the code you only have to compile the project and write in your termi
 ```shell
 	$java program
 ```
-if do you want to do the test write yes after this question.
+If do you want to do the test write yes after this question.
 
 ```shell
 	$quieres realizar los test?
